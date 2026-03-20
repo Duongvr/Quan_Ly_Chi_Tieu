@@ -1,0 +1,148 @@
+<UserControl x:Class="ProjectWithWPF_byDuong.IncomeManagerUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        MinWidth="800" MinHeight="600"
+        Width="900" Height="700"
+        Background="{StaticResource BgDark}">
+    <Border Style="{StaticResource MainContainerStyle}">
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+
+                <Button x:Name="btnBack"
+                        Style="{StaticResource BtnBackStyle}"
+                        Click="BtnBack_Click"/>
+
+                <Grid Margin="0,0,0,20">
+
+                    <StackPanel>
+                        <TextBlock Text="Quản lý thu nhập"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource IncomeColor}"/>
+
+                        <TextBlock x:Name="txtTotalIncome"
+                                   Text="Tổng thu nhập: 0đ"
+                                   FontSize="14"
+                                   Foreground="{StaticResource TextMuted}"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+
+                    <Button Content="+ Thêm thu nhập"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource BtnPrimaryIncome}"
+                            Padding="20,10"
+                            MinHeight="45"
+                            MinWidth="160"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Click="BtnAddIncome_Click"/>
+
+                </Grid>
+            </StackPanel>
+
+
+            <TextBox Grid.Row="1"
+                     x:Name="txtSearch"
+                     Style="{StaticResource InputBoxStyle}"
+                     Margin="0,0,0,20"
+                     Text="🔍 Tìm kiếm theo danh mục hoặc ghi chú..."
+                     GotFocus="TxtSearch_GotFocus"
+                     LostFocus="TxtSearch_LostFocus"/>
+
+
+            <Grid Grid.Row="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <DataGrid Grid.Row="1"
+                          x:Name="incomeGrid"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          HeadersVisibility="Column"
+                          Margin="0,10,0,0"
+                          BorderThickness="0"
+                          RowHeight="40" SelectionChanged="incomeGrid_SelectionChanged">
+
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{StaticResource IncomeColor}"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Height" Value="40"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.Resources>
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="STT"
+                                            Binding="{Binding STT}"
+                                            Width="60"
+                                            ElementStyle="{StaticResource CenterTextStyle}"/>
+
+                        <DataGridTextColumn Header="Danh mục"
+                                            Binding="{Binding CategoryName}"
+                                            Width="*"
+                                            ElementStyle="{StaticResource CenterTextStyle}"/>
+
+                        <DataGridTextColumn Header="Số tiền (đ)"
+                                            Binding="{Binding Amount}"
+                                            Width="*"
+                                            ElementStyle="{StaticResource CenterTextStyle}"/>
+
+                        <DataGridTextColumn Header="Ngày"
+                                            Binding="{Binding Date}"
+                                            Width="*"
+                                            ElementStyle="{StaticResource CenterTextStyle}"/>
+
+                        <DataGridTextColumn Header="Ghi chú"
+                                            Binding="{Binding Note}"
+                                            Width="2*"
+                                            ElementStyle="{StaticResource CenterTextStyle}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <StackPanel Grid.Row="2" 
+                            Orientation="Horizontal" 
+                            HorizontalAlignment="Right" 
+                            Margin="0,20,0,0">
+
+                    <Button x:Name="btnEdit"
+                            Content="✏️ Sửa thu nhập"
+                            Style="{StaticResource BtnPrimaryIncome}"
+                            Padding="20,10"
+                            MinHeight="40"
+                            MinWidth="120"
+                            FontSize="14"
+                            FontWeight="SemiBold"
+                            Margin="0,0,15,0"
+                            Click="BtnEdit_Click"/>
+
+                    <Button x:Name="btnDelete"
+                            Content="🗑️ Xóa thu nhập"
+                            Style="{StaticResource BtnPrimaryIncome}"
+                            Margin="0,0,0,0"
+                            Background="Red"
+                            Width="100"
+                            Click="BtnDelete_Click"/>
+                    
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>
+    </Border>
+
+</UserControl>

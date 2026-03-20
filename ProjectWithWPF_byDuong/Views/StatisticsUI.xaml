@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="ProjectWithWPF_byDuong.Views.StatisticsUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        MinWidth="800" MinHeight="600"
+        Background="{StaticResource BgDark}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+
+        <Border Style="{StaticResource MainContainerStyle}" Padding="30">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="0,0,0,25">
+                    <Button x:Name="btnBack" Style="{StaticResource BtnBackStyle}"
+                            HorizontalAlignment="Left"
+                            Margin="0,0,0,15"
+                            Click="BtnBack_Click"/>
+
+                    <TextBlock Text="Thống kê chi tiêu" FontSize="28" FontWeight="Bold" Foreground="#0284C7"/>
+                    <TextBlock Text="Tổng quan về tình hình tài chính của bạn" Foreground="{StaticResource TextMuted}" Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <Grid Grid.Row="1" Margin="0,0,0,25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Background="White" BorderBrush="#E5E7EB" BorderThickness="1" CornerRadius="12" Padding="20">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                <Border Background="#DCFCE7" Padding="5" CornerRadius="5" Margin="0,0,10,0">
+                                    <TextBlock Text="↗" Foreground="{StaticResource IncomeColor}" FontWeight="Bold"/>
+                                </Border>
+                                <TextBlock Text="Tổng thu nhập" Foreground="{StaticResource TextMuted}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtTotalIncome" Text="0đ" FontSize="22" FontWeight="Bold" Foreground="{StaticResource IncomeColor}"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="2" Background="White" BorderBrush="#E5E7EB" BorderThickness="1" CornerRadius="12" Padding="20">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                <Border Background="#FEE2E2" Padding="5" CornerRadius="5" Margin="0,0,10,0">
+                                    <TextBlock Text="↘" Foreground="{StaticResource ExpenseColor}" FontWeight="Bold"/>
+                                </Border>
+                                <TextBlock Text="Tổng chi tiêu" Foreground="{StaticResource TextMuted}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtTotalExpense" Text="0đ" FontSize="22" FontWeight="Bold" Foreground="{StaticResource ExpenseColor}"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="4" Background="White" BorderBrush="#E5E7EB" BorderThickness="1" CornerRadius="12" Padding="20">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                <Border Background="#F3E8FF" Padding="5" CornerRadius="5" Margin="0,0,10,0">
+                                    <TextBlock Text="💰" Foreground="{StaticResource ReportColor}"/>
+                                </Border>
+                                <TextBlock Text="Số dư" Foreground="{StaticResource TextMuted}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtBalance" Text="0đ" FontSize="22" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="2" Margin="0,0,0,25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Background="White" BorderBrush="#E5E7EB" BorderThickness="1" CornerRadius="12" Padding="20">
+                        <StackPanel>
+                            <TextBlock Text="Chi tiêu theo danh mục" FontWeight="Bold" FontSize="16" Margin="0,0,0,20"/>
+                            <Grid>
+                                <TextBlock x:Name="txtTopExpenseName" Text="Chưa có dữ liệu" HorizontalAlignment="Left" Foreground="{StaticResource TextMuted}"/>
+                                <TextBlock x:Name="txtExpenseCategory" Text="0đ" HorizontalAlignment="Right" Foreground="{StaticResource ExpenseColor}" FontWeight="SemiBold"/>
+                            </Grid>
+                            <ProgressBar x:Name="progressExpense" Value="0" Maximum="100" Height="8" Margin="0,10,0,0" Foreground="{StaticResource ExpenseColor}" Background="#FEE2E2" BorderThickness="0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="2" Background="White" BorderBrush="#E5E7EB" BorderThickness="1" CornerRadius="12" Padding="20">
+                        <StackPanel>
+                            <TextBlock Text="Thu nhập theo danh mục" FontWeight="Bold" FontSize="16" Margin="0,0,0,20"/>
+                            <Grid>
+                                <TextBlock x:Name="txtTopIncomeName" Text="Chưa có dữ liệu" HorizontalAlignment="Left" Foreground="{StaticResource TextMuted}"/>
+                                <TextBlock x:Name="txtIncomeCategory" Text="0đ" HorizontalAlignment="Right" Foreground="{StaticResource IncomeColor}" FontWeight="SemiBold"/>
+                            </Grid>
+                            <ProgressBar x:Name="progressIncome" Value="0" Maximum="100" Height="8" Margin="0,10,0,0" Foreground="{StaticResource IncomeColor}" Background="#DCFCE7" BorderThickness="0"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <Border Grid.Row="3" Background="White" BorderBrush="#E5E7EB" BorderThickness="1" CornerRadius="12" Padding="20" Margin="0,0,0,20">
+                    <StackPanel>
+                        <TextBlock Text="Biểu đồ trực quan" FontWeight="Bold" FontSize="16" Margin="0,0,0,15"/>
+                        <Image x:Name="ApiChartImage" Stretch="Uniform" Height="250" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+            </Grid>
+        </Border>
+    </ScrollViewer>
+</UserControl>

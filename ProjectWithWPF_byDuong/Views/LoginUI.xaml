@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="ProjectWithWPF_byDuong.LoginUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        MinWidth="500"
+        MinHeight="450"
+        Width="800"
+        Height="500"
+        Background="#2B2B2B">
+
+    <Grid>
+
+        <Border Background="#E5E7EB"
+                CornerRadius="15"
+                Padding="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                MinWidth="350"
+                MaxWidth="450"
+                Style="{StaticResource CardStyle}">
+
+            <StackPanel>
+
+                <TextBlock Text="Quản lý chi tiêu cá nhân"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Foreground="#9333EA"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,10"/>
+
+                <TextBlock Text="Đăng nhập để tiếp tục"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,30"
+                           Foreground="Gray"/>
+
+                <TextBlock Text="Email" Margin="0,0,0,5" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtEmail"
+                         Margin="0,0,0,5"
+                         Padding="8"
+                         FontSize="14"/>
+
+                <!-- Error label for Email -->
+                <TextBlock x:Name="lblEmailError"
+                           Text=""
+                           Foreground="#EF4444"
+                           FontSize="12"
+                           Margin="0,0,0,10"
+                           Visibility="Collapsed"/>
+
+                <TextBlock Text="Mật khẩu"
+                           Margin="0,0,0,5"
+                           FontWeight="SemiBold"/>
+
+                <PasswordBox x:Name="txtPassword"
+                             Margin="0,0,0,5"
+                             Padding="8"
+                             FontSize="14"
+                             />
+
+                <!-- Error label for Password -->
+                <TextBlock x:Name="lblPasswordError"
+                           Text=""
+                           Foreground="#EF4444"
+                           FontSize="12"
+                           Margin="0,0,0,10"
+                           Visibility="Collapsed"/>
+
+                <!-- forgot password -->
+                <Button Content="Quên mật khẩu?"
+                        HorizontalAlignment="Right"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="#2563EB"
+                        FontSize="12"
+                        Margin="0,0,0,20"
+                        Click="BtnForgot_Click"/>
+
+                <CheckBox x:Name="chkRemember"
+                          Content="Ghi nhớ mật khẩu"
+                          Margin="0,10,0,10"/>
+
+                <Button Content="Đăng nhập"
+                        Height="45"
+                        FontSize="15"
+                        FontWeight="Bold"
+                        Style="{StaticResource PrimaryButton}"
+                        Click="DangNhap_click"/>
+
+                <!-- register -->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="0,20,0,0">
+
+                    <TextBlock Text="Chưa có tài khoản?"
+                               VerticalAlignment="Center"
+                               Margin="0,0,5,0"/>
+
+                    <Button Content="Đăng ký"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Foreground="#9333EA"
+                            FontWeight="Bold"
+                            Click="BtnRegister_Click"/>
+
+                </StackPanel>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+</UserControl>

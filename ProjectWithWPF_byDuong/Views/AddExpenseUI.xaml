@@ -1,0 +1,117 @@
+<Window x:Class="ProjectWithWPF_byDuong.AddExpenseUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Thêm chi tiêu mới"
+        MinWidth="800"
+        MinHeight="600"
+        Width="900"
+        Height="700"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BgDark}">
+
+    <Border Style="{StaticResource MainContainerStyle}">
+        <Grid HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              Width="400">
+
+            <StackPanel>
+
+                <!-- BACK -->
+                <Button x:Name="btnBack"
+                        Style="{StaticResource BtnBackStyle}"
+                        Click="BtnBack_Click"/>
+
+
+                <!-- HEADER -->
+                <StackPanel HorizontalAlignment="Center"
+                            Margin="0,0,0,30">
+
+                    <Border Background="{StaticResource ExpenseColor}"
+                            Width="60"
+                            Height="60"
+                            CornerRadius="15"
+                            Margin="0,0,0,15">
+
+                        <TextBlock Text="$"
+                                   Foreground="White"
+                                   FontSize="24"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+
+                    </Border>
+
+                    <TextBlock Text="Thêm chi tiêu mới"
+                               FontSize="22"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource ExpenseColor}"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Nhập thông tin chi tiêu của bạn"
+                               Foreground="{StaticResource TextMuted}"
+                               Margin="0,5,0,0"
+                               HorizontalAlignment="Center"/>
+
+                </StackPanel>
+
+
+                <!-- AMOUNT -->
+                <TextBlock Text="💲 Số tiền"
+                           Foreground="{StaticResource TextMuted}"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,5"/>
+
+                <TextBox x:Name="txtAmount"
+                         Style="{StaticResource InputBoxStyle}"
+                         Text="Nhập số tiền..."
+                         GotFocus="TxtAmount_GotFocus"
+                         LostFocus="TxtAmount_LostFocus"/>
+
+
+                <!-- CATEGORY -->
+                <TextBlock Text="🏷 Danh mục"
+                           Foreground="{StaticResource TextMuted}"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,5"/>
+
+                <!-- Replace existing cbCategory element with this if you want a template -->
+                <ComboBox x:Name="cbCategory"
+                    Style="{StaticResource CenterComboBoxStyle}"
+                    SelectedIndex="0">
+
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding CategoryName}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+                </ComboBox>
+
+
+                <!-- NOTE -->
+                <TextBlock Text="📄 Ghi chú"
+                           Foreground="{StaticResource TextMuted}"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,5"/>
+
+                <TextBox x:Name="txtNote"
+                         Style="{StaticResource InputBoxStyle}"
+                         Height="80"
+                         TextWrapping="Wrap"
+                         Text="Nhập ghi chú..."
+                         GotFocus="TxtNote_GotFocus"
+                         LostFocus="TxtNote_LostFocus"/>
+
+
+                <!-- BUTTON -->
+                <Button Content="Thêm chi tiêu"
+                        Style="{StaticResource BtnPrimaryExpense}"
+                        Height="50"
+                        Margin="0,10,0,0"
+                        Click="BtnAddExpense_Click"/>
+
+            </StackPanel>
+
+        </Grid>
+    </Border>
+</Window>
